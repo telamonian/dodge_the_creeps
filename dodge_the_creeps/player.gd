@@ -7,7 +7,7 @@ var screen_size # size of game window
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	
+
 	# hide the player when the game starts
 	hide()
 
@@ -28,7 +28,7 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
-		
+
 	position += velocity*delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 
@@ -47,9 +47,8 @@ func _on_body_entered(body):
 
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
-	
+
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	
